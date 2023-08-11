@@ -18,7 +18,7 @@ export class SalesService implements RoleConstructor {
         const ownBonus = totalBonus > role.bonusPerYearCap ? role.bonusPerYearCap : totalBonus
         const hiringBonus = await this.recursiveGetSubordinatesBonus([worker], worker.role)
 
-        return salary + ((ownBonus / 100) * salary) + hiringBonus
+        return salary + ((ownBonus / 100) * salary) + ((hiringBonus / 100) * salary)
     }
 
     getYearDiff(startDate: Date, endDate: Date): number {
